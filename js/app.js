@@ -1,162 +1,160 @@
-
 /**
  * Main app file.  Initializes app components.
  */
-
 
 /**
  * The main app object.
  *
  */
-var vanillaPress = {
+ var vanillaPress = {
 
-  posts: {},
+ 	posts: {},
 
-  init: function() {
+ 	init: function() {
 
-    this.posts = this.getBlogsData();
-    this.displayBlogPosts();
-    this.setSiteNameClickEvent();
-  },
+ 		this.posts = this.getBlogsData();
+ 		this.displayBlogPosts();
+ 		this.setSiteNameClickEvent();
+ 	},
 
-  /**
-   * Get blog posts data.
-   *
-   * @return {array} Blog post data.
-   */
-  getBlogsData: function() {
-    return JSON.parse(jsonData);
-  },
+	/**
+	 * Get blog posts data.
+	 *
+	 * @return {array} Blog post data.
+	 */
+	getBlogsData: function() {
+		return JSON.parse(jsonData);
+	},
 
-  /**
-   * Display blog posts.
-   *
-   * @return {void}
-   */
-  displayBlogPosts: function() {
-    var posts = vanillaPress.posts,
-      docfrag = document.createDocumentFragment(),
-      pageContent  = document.getElementById('pageContent'),
-      blogsListSection = document.createElement('section');
+	/**
+	 * Display blog posts.
+	 *
+	 * @return {void}
+	 */
+	displayBlogPosts: function() {
+		var posts = vanillaPress.posts,
+		docfrag = document.createDocumentFragment(),
+		pageContent  = document.getElementById('pageContent'),
+		blogsListSection = document.createElement('section');
 
-    blogsListSection.setAttribute('id', 'blogLists');
-    blogsListSection.setAttribute('class', 'blog-lists');
+		blogsListSection.setAttribute('id', 'blogLists');
+		blogsListSection.setAttribute('class', 'blog-lists');
 
-    for (var i = 0; i < posts.length; i++) {
-      var article = vanillaPress.createSinglePostForListing(posts[i]);
+		for (var i = 0; i < posts.length; i++) {
+			var article = vanillaPress.createSinglePostForListing(posts[i]);
 
-      blogsListSection.appendChild(article);
-    }
+			blogsListSection.appendChild(article);
+		}
 
-    docfrag.appendChild(blogsListSection);
-    pageContent.appendChild(docfrag);
-  },
+		docfrag.appendChild(blogsListSection);
+		pageContent.appendChild(docfrag);
+	},
 
-  /**
-   * Create single blog post to appear in blog listing.
-   *
-   * @param  {object} post Blog post.
-   *
-   * @return {void}
-   */
-  createSinglePostForListing: function(post) {
-    var article = document.createElement('article'),
-      blogTitle = document.createElement('h3'),
-      blogTitleLink = document.createElement('a'),
-      blogContent = document.createElement('div');
+	/**
+	 * Create single blog post to appear in blog listing.
+	 *
+	 * @param  {object} post Blog post.
+	 *
+	 * @return {void}
+	 */
+	createSinglePostForListing: function(post) {
+		var article = document.createElement('article'),
+		blogTitle = document.createElement('h3'),
+		blogTitleLink = document.createElement('a'),
+		blogContent = document.createElement('div');
 
-    article.setAttribute('id', 'blog' + post.id);
-    blogTitleLink.textContent = post.title;
-    blogTitleLink.setAttribute('href', '#' + post.slug);
-    blogTitleLink.dataset.blogId = post.id;
-    blogTitleLink.addEventListener('click', vanillaPress.singlePostLinkClickHandler, false);
-    blogTitle.appendChild(blogTitleLink);
-    blogContent.innerHTML = post.content;
+		article.setAttribute('id', 'blog' + post.id);
+		blogTitleLink.textContent = post.title;
+		blogTitleLink.setAttribute('href', '#' + post.slug);
+		blogTitleLink.dataset.blogId = post.id;
+		blogTitleLink.addEventListener('click', vanillaPress.singlePostLinkClickHandler, false);
+		blogTitle.appendChild(blogTitleLink);
+		blogContent.innerHTML = post.content;
 
-    article.appendChild(blogTitle);
-    article.appendChild(blogContent);
+		article.appendChild(blogTitle);
+		article.appendChild(blogContent);
 
-    return article;
-  },
+		return article;
+	},
 
-  /**
-   * Create single post.
-   *
-   * @param  {array} post Post.
-   *
-   * @return {void}
-   */
-  createSinglePost: function(post) {
-    var article = document.createElement('article'),
-      blogTitle = document.createElement('h2'),
-      blogContent = document.createElement('div');
+	/**
+	 * Create single post.
+	 *
+	 * @param  {array} post Post.
+	 *
+	 * @return {void}
+	 */
+	createSinglePost: function(post) {
+		var article = document.createElement('article'),
+		blogTitle = document.createElement('h2'),
+		blogContent = document.createElement('div');
 
-    article.setAttribute('id', 'blog' + post.id);
-    blogTitle.innerHTML = post.title;
-    blogContent.innerHTML = post.content;
+		article.setAttribute('id', 'blog' + post.id);
+		blogTitle.innerHTML = post.title;
+		blogContent.innerHTML = post.content;
 
-    article.appendChild(blogTitle);
-    article.appendChild(blogContent);
+		article.appendChild(blogTitle);
+		article.appendChild(blogContent);
 
-    return article;
-  },
+		return article;
+	},
 
-  /**
-   * Set site name click event
-   */
-  setSiteNameClickEvent: function() {
-      var siteNameLink = document.querySelector('#siteName a');
-      siteNameLink.addEventListener('click', vanillaPress.siteNameClickHandler, false);
-  },
+	/**
+	 * Set site name click event
+	 */
+	setSiteNameClickEvent: function() {
+		var siteNameLink = document.querySelector('#siteName a');
+		siteNameLink.addEventListener('click', vanillaPress.siteNameClickHandler, false);
+	},
 
-  /**
-   * Site name click handler.
-   *
-   * @param  {object} e Event.
-   *
-   * @return {void}
-   */
-  siteNameClickHandler: function(e) {
-    // e.preventDefault();
+	/**
+	 * Site name click handler.
+	 *
+	 * @param  {object} e Event.
+	 *
+	 * @return {void}
+	 */
+	siteNameClickHandler: function(e) {
+		// e.preventDefault();
 
-    vanillaPress.emptyPageContent(pageContent);
-    vanillaPress.displayBlogPosts();
-  },
+		vanillaPress.emptyPageContent(pageContent);
+		vanillaPress.displayBlogPosts();
+	},
 
-  /**
-   * Single post click handler.
-   *
-   * @param  {object} e Event/
-   *
-   * @return {void}
-   */
-  singlePostLinkClickHandler: function(e) {
-    // e.preventDefault();
-    var article,
-      pageContent  = document.getElementById('pageContent');
+	/**
+	 * Single post click handler.
+	 *
+	 * @param  {object} e Event/
+	 *
+	 * @return {void}
+	 */
+	singlePostLinkClickHandler: function(e) {
+		// e.preventDefault();
+		var article,
+		pageContent  = document.getElementById('pageContent');
 
-    vanillaPress.emptyPageContent(pageContent);
-    article = vanillaPress.createSinglePost(vanillaPress.posts[this.dataset.blogId - 1]);
-    pageContent.appendChild(article);
-  },
+		vanillaPress.emptyPageContent(pageContent);
+		article = vanillaPress.createSinglePost(vanillaPress.posts[this.dataset.blogId - 1]);
+		pageContent.appendChild(article);
+	},
 
-  /**
-   * Empty page content
-   *
-   * @return {void}
-   */
-  emptyPageContent: function() {
-    var pageContent = document.getElementById('pageContent'),
-      blogLinks = document.querySelectorAll('#blogLists article a');
+	/**
+	* Empty page content
+	*
+	* @return {void}
+	*/
+	emptyPageContent: function() {
+		var pageContent = document.getElementById('pageContent'),
+		blogLinks = document.querySelectorAll('#blogLists article a');
 
-    blogLinks.forEach(function(e) {
-      e.removeEventListener('click', vanillaPress.siteNameClickHandler, false);
-    });
+		blogLinks.forEach(function(e) {
+			e.removeEventListener('click', vanillaPress.siteNameClickHandler, false);
+		});
 
-    while (pageContent.firstChild) {
-      pageContent.removeChild(pageContent.firstChild);
-    }
-  }
+		while (pageContent.firstChild) {
+			pageContent.removeChild(pageContent.firstChild);
+		}
+	}
 };
 
 vanillaPress.init();
