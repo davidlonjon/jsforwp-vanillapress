@@ -1,5 +1,5 @@
 /**
-* Main JSON object of posts, pages and settings
+* Main JSON object of posts, pages and settings.
 */
 var posts = [
 	{
