@@ -36,9 +36,9 @@
  	loadContent: function() {
  		var slug = vpRouter.getSlug();
  		if ( '' === slug ) {
-			vpView.loadBlogPosts();
+			vpPostsViews.loadBlogPosts();
  		} else {
- 			vpView.loadBlogPost( slug );
+ 			vpPostsViews.loadBlogPost( slug );
  		}
  	},
 

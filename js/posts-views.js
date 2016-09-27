@@ -1,12 +1,12 @@
 /**
- * View file. Handle displaying the data in the page.
+ * Posts views file. Handle displaying the posts in a  list or single.
  */
 
 /**
- * The view object.
+ * The posts views object.
  *
  */
- var vpView = {
+ var vpPostsViews = {
 
 	/**
 	 * Display blog posts.
@@ -22,13 +22,13 @@
 		blogsListSection.setAttribute( 'class', 'blog-lists' );
 
 		for ( var i = 0; i < posts.length; i++ ) {
-			var article = vpView.createPostListingMarkup( posts[i] );
+			var article = vpPostsViews.createPostListingMarkup( posts[i] );
 
 			blogsListSection.appendChild( article );
 		}
 
 		docfrag.appendChild (blogsListSection );
-		vpView.clearPageListingContent( pageContent );
+		vpPostsViews.clearPageListingContent( pageContent );
 		pageContent.appendChild( docfrag );
 	},
 
@@ -43,7 +43,7 @@
 		var article,
 			pageContent = vpHelpers.getPageContentElement();
 
-		vpView.clearPageListingContent( pageContent );
+		vpPostsViews.clearPageListingContent( pageContent );
 		article = vpModel.getContentBySlug( 'posts', slug );
 		pageContent.appendChild( this.createPostMarkup( article ) );
 	},
