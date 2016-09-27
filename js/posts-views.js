@@ -44,7 +44,7 @@
 			pageContent = vpHelpers.getPageContentElement();
 
 		vpPostsViews.clearPageListingContent( pageContent );
-		article = vpModel.getContentBySlug( 'posts', slug );
+		article = vpModel.getContentBySlug( slug, 'posts' );
 		pageContent.appendChild( this.createPostMarkup( article ) );
 	},
 

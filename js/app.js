@@ -8,7 +8,8 @@
  var vanillaPress = {
 
  	config: {
- 		dataStore: 'vanillaPress'
+ 		dataStore: 'vanillaPress',
+ 		contentTypes: Object.keys(data)
  	},
 
  	/**

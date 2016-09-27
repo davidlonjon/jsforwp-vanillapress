@@ -65,25 +65,34 @@
  	 * @return {array}             List of objects.
  	 */
  	getContent: function( contentType ) {
- 		return vpModel.getLocalStorageData( this.config.dataStore )[contentType];
+ 		var content = [];
+ 		if ( 'undefined' === typeof contentType ) {
+ 			for (var i = 0, max = this.config.contentTypes.length; i < max; i++) {
+ 				var data = vpModel.getLocalStorageData( this.config.dataStore )[this.config.contentTypes[i]];
+ 				content = content.concat( data );
+ 			}
+ 		} else {
+	 		content = vpModel.getLocalStorageData( this.config.dataStore )[contentType];
+ 		}
+ 		return content;
  	},
 
  	/**
  	 * Get content by slug.
  	 *
- 	 * @param  {string} contentType Content type.
  	 * @param  {string} slug        Slug.
+ 	 * @param  {string} contentType Content type.
  	 *
  	 * @return {object}             Content.
  	 */
- 	getContentBySlug: function( contentType, slug ) {
- 		var data = vpModel.getLocalStorageData( this.config.dataStore )[contentType];
-
- 		for ( var i = 0, max = data.length; i < max; i++ ) {
- 			if ( slug === data[i].slug ) {
- 				return data[i];
+ 	getContentBySlug: function( slug, contentType ) {
+ 		var content = this.getContent( contentType );
+ 		for ( var i = 0, max = content.length; i < max; i++ ) {
+ 			if ( slug === content[i].slug ) {
+ 				return content[i];
  			}
  		}
 
+ 		return null;
  	},
  };
