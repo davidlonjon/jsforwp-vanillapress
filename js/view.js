@@ -46,7 +46,6 @@
 
 		vpView.clearPageListingContent( pageContent );
 		article = vpModel.getContentBySlug( slug, 'vpPosts' );
-		console.log(slug, article);
 		pageContent.appendChild( this.createPostMarkup( article ) );
 	},
 

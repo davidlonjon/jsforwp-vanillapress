@@ -64,7 +64,6 @@
  	 * @return {object}             Content.
  	 */
  	getContentBySlug: function( slug , contentType ) {
- 		console.log(contentType);
  		var data = vpModel.getLocalStorageData( contentType );
 
  		for ( var i = 0, max = data.length; i < max; i++ ) {
