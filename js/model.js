@@ -10,13 +10,15 @@
  */
  var vpModel = {
 
+ 	config: {},
  	/**
  	 * Initialization.
  	 *
  	 * @return {void}
  	 */
- 	init: function() {
- 		this.setLocalStorageData( 'vanillaPress', data );
+ 	init: function( config ) {
+ 		this.config = config;
+ 		this.setLocalStorageData( this.config.dataStore, data );
  	},
 
  	/**
@@ -63,7 +65,7 @@
  	 * @return {array}             List of objects.
  	 */
  	getContent: function( contentType ) {
- 		return vpModel.getLocalStorageData( 'vanillaPress' )[contentType];
+ 		return vpModel.getLocalStorageData( this.config.dataStore )[contentType];
  	},
 
  	/**
@@ -75,7 +77,7 @@
  	 * @return {object}             Content.
  	 */
  	getContentBySlug: function( contentType, slug ) {
- 		var data = vpModel.getLocalStorageData( 'vanillaPress' )[contentType];
+ 		var data = vpModel.getLocalStorageData( this.config.dataStore )[contentType];
 
  		for ( var i = 0, max = data.length; i < max; i++ ) {
  			if ( slug === data[i].slug ) {
