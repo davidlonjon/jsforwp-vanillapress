@@ -43,14 +43,6 @@
  	},
 
 	/**
-	 * Set site name click event.
-	 */
-	setSiteNameClickEvent: function() {
-		var siteNameLink = document.querySelector( '#siteName a' );
-		siteNameLink.addEventListener( 'click', vpRouter.siteNameClickHandler, false);
-	},
-
-	/**
 	 * Listener function for URL changes
 	 *
 	 */
