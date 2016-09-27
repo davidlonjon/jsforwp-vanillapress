@@ -106,10 +106,6 @@
 		var pageContent = vpHelpers.getPageContentElement(),
 			blogLinks = document.querySelectorAll( '#blogLists article a' );
 
-		blogLinks.forEach( function( e ) {
-			e.removeEventListener( 'click', vpView.siteNameClickHandler, false );
-		} );
-
 		while ( pageContent.firstChild ) {
 			pageContent.removeChild( pageContent.firstChild );
 		}
