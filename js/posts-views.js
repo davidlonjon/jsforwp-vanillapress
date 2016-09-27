@@ -13,7 +13,7 @@
 	 *
 	 * @return {void}
 	 */
-	loadBlogPosts: function() {
+	displayBlogPosts: function() {
 		var posts = vpModel.getContent( 'posts' ),
 			docfrag = document.createDocumentFragment(),
 			pageContent  = vpHelpers.getPageContentElement(),
@@ -33,19 +33,14 @@
 	},
 
 	/**
-	 * Load blog post.
+	 * Display blog post.
 	 *
 	 * @param  {string} slug Slug.
 	 *
 	 * @return {void}
 	 */
-	loadBlogPost: function( slug ) {
-		var article,
-			pageContent = vpHelpers.getPageContentElement();
-
-		vpPostsViews.clearPageListingContent( pageContent );
-		article = vpModel.getContentBySlug( slug, 'posts' );
-		pageContent.appendChild( this.createPostMarkup( article ) );
+	displayBlogPost: function( post ) {
+		pageContent.appendChild( this.createPostMarkup( post ) );
 	},
 
 	/**
