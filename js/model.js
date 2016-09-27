@@ -16,7 +16,7 @@
  	 * @return {void}
  	 */
  	init: function() {
- 		this.setLocalStorageData( 'vpPosts', posts );
+ 		this.setLocalStorageData( 'vanillaPress', data );
  	},
 
  	/**
@@ -56,15 +56,26 @@
  	},
 
  	/**
+ 	 * Get content.
+ 	 *
+ 	 * @param  {string} contentType Content type.
+ 	 *
+ 	 * @return {array}             List of objects.
+ 	 */
+ 	getContent: function( contentType ) {
+ 		return vpModel.getLocalStorageData( 'vanillaPress' )[contentType];
+ 	},
+
+ 	/**
  	 * Get content by slug.
  	 *
- 	 * @param  {string} slug        Slug.
  	 * @param  {string} contentType Content type.
+ 	 * @param  {string} slug        Slug.
  	 *
  	 * @return {object}             Content.
  	 */
- 	getContentBySlug: function( slug , contentType ) {
- 		var data = vpModel.getLocalStorageData( contentType );
+ 	getContentBySlug: function( contentType, slug ) {
+ 		var data = vpModel.getLocalStorageData( 'vanillaPress' )[contentType];
 
  		for ( var i = 0, max = data.length; i < max; i++ ) {
  			if ( slug === data[i].slug ) {

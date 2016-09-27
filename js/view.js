@@ -14,11 +14,10 @@
 	 * @return {void}
 	 */
 	loadBlogPosts: function() {
-		var posts = vpModel.getLocalStorageData( 'vpPosts' ),
+		var posts = vpModel.getContent( 'posts' ),
 			docfrag = document.createDocumentFragment(),
 			pageContent  = vpHelpers.getPageContentElement(),
 			blogsListSection = document.createElement( 'section' );
-
 		blogsListSection.setAttribute( 'id', 'blogLists' );
 		blogsListSection.setAttribute( 'class', 'blog-lists' );
 
@@ -45,7 +44,7 @@
 			pageContent = vpHelpers.getPageContentElement();
 
 		vpView.clearPageListingContent( pageContent );
-		article = vpModel.getContentBySlug( slug, 'vpPosts' );
+		article = vpModel.getContentBySlug( 'posts', slug );
 		pageContent.appendChild( this.createPostMarkup( article ) );
 	},
 
