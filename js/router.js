@@ -45,6 +45,7 @@
 	/**
 	 * Listener function for URL changes
 	 *
+	 * @return {void}
 	 */
 	listenPageChange: function( e ) {
 		window.addEventListener( 'hashchange', vpRouter.loadContent, false );
