@@ -35,20 +35,23 @@
  	 */
  	loadContent: function() {
  		var slug = vpRouter.getSlug();
+
+ 		vpViews.displayMenu('main');
  		if ( '' === slug ) {
-			vpPostsViews.displayBlogPosts();
+			vpViews.displaySingleContent( 'home' );
+ 		} else if ( 'blog' === slug ) {
+			vpViews.displayBlogPosts();
  		} else {
  			vpViews.displaySingleContent( slug );
  		}
  	},
 
 	/**
-	 * Listener function for URL changes
+	 * Listener function for URL changes.
 	 *
 	 * @return {void}
 	 */
 	listenPageChange: function( e ) {
 		window.addEventListener( 'hashchange', vpRouter.loadContent, false );
 	},
-
 };

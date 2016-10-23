@@ -95,4 +95,20 @@
 
  		return null;
  	},
+
+ 	getPosts: function() {
+ 		return this.getContent( 'posts' );
+ 	},
+
+ 	getPost: function( slug ) {
+ 		return this.getContentBySlug( slug, 'posts' );
+ 	},
+
+ 	getPages: function() {
+ 		return this.getContent( 'pages' );
+ 	},
+
+ 	getPage: function( slug ) {
+ 		return this.getContentBySlug( slug, 'pages');
+ 	},
  };

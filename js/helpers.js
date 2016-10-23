@@ -15,7 +15,16 @@
  	 *
  	 * @return {dom} Page content element
  	 */
- 	getPageContentElement: function() {
+ 	getPageContentEl: function() {
  		return document.getElementById( 'pageContent' );
+ 	},
+
+ 	/**
+ 	 * Get page title element.
+ 	 *
+ 	 * @return {dom} Page title element
+ 	 */
+ 	getPageTitleEl: function() {
+ 		return document.getElementById( 'pageTitle' );
  	},
  };
